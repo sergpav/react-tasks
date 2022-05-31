@@ -1,0 +1,40 @@
+.admin {
+  &__table {
+    margin: 0 auto;
+    max-width: 800px;
+    margin-top: 5px;
+    &_container {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      align-items: center;
+      text-align: center;
+    }
+    &_head {
+      text-transform: capitalize;
+      margin-left: 5px;
+      margin-right: 5px;
+    }
+    &_body {
+      grid-template-columns: repeat(6, 1fr);
+      & > div {
+        padding-top: 3px;
+        padding-bottom: 3px;
+      }
+      &:nth-child(even) {
+        background-color: rgba(0, 0, 0, 0.1);
+      }
+    }
+  }
+  &__button {
+    text-transform: uppercase;
+    cursor: pointer;
+    color: #fff;
+    background-color: #0d6efd;
+    border: none;
+    border-radius: 7px;
+    margin: 0px 5px;
+    &_delete {
+      background-color: #dc3545;
+    }
+  }
+}
