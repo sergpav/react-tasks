@@ -39,6 +39,9 @@
     &:hover {
       filter: grayscale(0%);
     }
+    &_selected{
+      filter: grayscale(0%);
+    }
   }
   &__radio {
     display: none;

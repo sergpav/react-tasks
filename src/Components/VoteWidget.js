@@ -10,7 +10,8 @@ export class VoteWidget extends React.Component {
     super(props);
     this.state = {
       initialReaction: INITIAL_REACTION,
-      selected: 0
+      selected: 0,
+      voted: false
     };
     this.handleStarChange = this.handleStarChange.bind(this);
   }
@@ -21,30 +22,31 @@ export class VoteWidget extends React.Component {
     this.setState({ initialReaction: REACTIONS[current] });
     const currentStar = +current + 1;
     this.props.storeVote(currentStar);
-    this.setState({selected: current});
+    this.setState({ selected: current });
+    if (this.state.voted === false) this.setState({voted:true}); 
   }
 
   renderStars() {
-    let starsTemplate = [];
-    for (let i = 0; i < STARS; i++) {
-      starsTemplate.push(
-        <label key={i} className={styles.widget__label}>
+    return [...Array(STARS)].map((star, index) => {
+      const selectedClass =  this.state.selected >= index ? (styles.widget__star_selected+ ' ' + styles.widget__star) : styles.widget__star;
+      let currentClass = this.state.voted === false ? styles.widget__star: selectedClass;
+      return (
+        <label key={"star" + index} className={styles.widget__label}>
           <input
             className={styles.widget__radio}
             type="radio"
             name="vote"
-            value={i}
+            value={index}
             onChange={this.handleStarChange}
           />
           <img
-            className={styles.widget__star}
+            className={currentClass}
             src={process.env.PUBLIC_URL + "/images/star.png"}
-            alt={i + " star"}
+            alt={index + " star"}
           />
         </label>
       );
-    }
-    return starsTemplate;
+    });
   }
 
   render() {
