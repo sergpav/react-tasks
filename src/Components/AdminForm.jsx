@@ -15,6 +15,17 @@ export class AdminForm extends Component {
     this.storeForm = this.storeForm.bind(this);
   }
 
+  componentDidUpdate(prevProps) {
+    const {edit} = this.props;
+    if(!edit) return;
+    if(edit !== prevProps.edit) {
+      this.setState({
+        username: edit.username,
+        department: edit.department
+      });
+    }
+  }
+
   createDepartmentsDropDown() {
     const defaultValue = <option key={"department_"} value="">Pleace choise department</option>;
     const options = getDepartments().map((department, i) => {
@@ -25,7 +36,11 @@ export class AdminForm extends Component {
 
   storeForm(e) {
     e.preventDefault();
-    this.props.setPerson(this.state);
+    const {edit} = this.props;
+    const toStore = {...this.state};
+    if(edit) toStore.id = edit.id;
+    this.props.setPerson(toStore);
+    this.setState(initialState);
   }
 
   setProp(e) {

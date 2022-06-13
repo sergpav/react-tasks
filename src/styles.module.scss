@@ -66,17 +66,23 @@
       }
     }
   }
-  &__table_head, &__table_body {
-    display: grid;
-    grid-template-columns: 40px 2fr 3fr 1fr;
-    text-align: center;
-  }
-  &__table_body {
-    margin: 3px 0;
-  }
-  &__table_head {
-    margin-top: 10px;
-    background-color: rgba($color: #000000, $alpha: 0.1);
+  &__table{
+    &_head, &_body {
+      display: grid;
+      grid-template-columns: 40px 2fr 3fr 1fr;
+      text-align: center;
+    }
+    &_body {
+      margin: 3px 0;
+    }
+    &_head {
+      margin-top: 10px;
+      background-color: rgba($color: #000000, $alpha: 0.1);
+    }
+    &_hide {
+      display: none;
+    }
+
   }
   &__search {
     width: 60%;
