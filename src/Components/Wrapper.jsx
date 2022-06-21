@@ -64,8 +64,8 @@ export class Wrapper extends Component {
     this.setState({ persons:storeData });
   }
 
-  delete(id) {
-    const result = window.confirm('delete user?');
+  delete(id, username) {
+    const result = window.confirm(`delete user ${username}?`);
     if(!result) return
     const storedPersons = this.getFromStorage('persons');
     storedPersons.splice(id, 1);

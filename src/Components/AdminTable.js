@@ -18,13 +18,13 @@ export class AdminTable extends Component {
     this.setState({search});
   }
 
-  actionButtons(id) {
+  actionButtons(id, username) {
     return AVAILABLE_ACTIONS.map((actionName, i) => {
       return (
         <button
           className={styles[actionName]}
           key={i}
-          onClick={() => this.props[actionName](id)}
+          onClick={() => this.props[actionName](id, username)}
         >
           {actionName === 'delete' ? '❌': '🖊️'}
         </button>
@@ -43,7 +43,7 @@ export class AdminTable extends Component {
           <div>{id}</div>
           <div>{username}</div>
           <div>{department}</div>
-          <div>{this.actionButtons(key)}</div>
+          <div>{this.actionButtons(key, username)}</div>
         </div>
       );
     });
