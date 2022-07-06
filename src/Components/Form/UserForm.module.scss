@@ -1,0 +1,26 @@
+.wrapper {
+  max-width: 600px;
+  border-radius: 10px;
+  margin: 0 auto;
+  margin-top: 20px;
+  border: 3px greenyellow solid;
+  &__control{
+    margin: 10px 5px 0 5px;
+    label {
+      font-weight: 600;
+    }
+    input[type="text"] {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 4px 5px;
+    }
+    select {
+      display: block;
+    }
+    input[type="submit"] {
+      margin: 0 auto;
+      margin-bottom: 10px;
+      display: block;
+    }
+  }
+}
